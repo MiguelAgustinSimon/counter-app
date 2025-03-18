@@ -1,96 +1,71 @@
 # 🏗️ Proyecto Base de React Native
 
-¡Bienvenido al **proyecto base** de React Native! 🚀
+¡Bienvenido al **esqueleto de React Native**! 🚀
 
-Este es un **esqueleto** optimizado para desarrollar aplicaciones móviles con React Native de manera rápida y eficiente. Incluye las dependencias más utilizadas, como:
-
+Este proyecto base incluye:
 ✅ `react-native-paper` (Componentes UI con Material Design)  
-✅ `Ionicons` (Íconos personalizables para tu app)  
-
-Este repositorio está diseñado para ser una **plantilla base**, evitando la instalación manual de paquetes en cada nuevo proyecto.
+✅ `Ionicons` (Íconos personalizables)  
+✅ `react-native-config` (Manejo de variables de entorno)  
 
 ---
 
-## 📥 Cómo usar este proyecto base
-Sigue estos pasos para crear un nuevo proyecto basado en este esqueleto:
-
+## 📥 Uso rápido
 ### 1️⃣ Clonar el repositorio
 ```bash
 git clone https://github.com/TU_USUARIO/TU_REPOSITORIO.git NUEVO_PROYECTO
-```
-📌 *Reemplaza `TU_USUARIO` y `TU_REPOSITORIO` con la URL real del repositorio.*
-
----
-
-### 2️⃣ Ingresar al nuevo proyecto y reiniciar Git
-```bash
 cd NUEVO_PROYECTO
 rm -rf .git
 ```
-💡 *Este comando elimina el historial de Git para que puedas iniciar un nuevo repositorio sin rastros del proyecto base.*
 
----
-
-### 3️⃣ Instalar las dependencias del proyecto
+### 2️⃣ Instalar dependencias
 ```bash
 npm install
+npx pod-install  # Solo para iOS
 ```
-Esto instalará todas las dependencias necesarias.
 
----
-
-### 4️⃣ Instalar los pods (iOS)
+### 3️⃣ Ejecutar la app
 ```bash
-npx pod-install
-```
-📌 *Este paso es obligatorio si desarrollas para iOS.*
-
----
-
-### 5️⃣ Ejecutar el proyecto en iOS o Android
-🔹 Para iOS:
-```bash
-npm run ios
-```
-🔹 Para Android:
-```bash
-npm run android
+npm run ios  # Para iOS
+npm run android  # Para Android
 ```
 
 ---
 
-## 🔄 Crear un nuevo repositorio en GitHub
-Si deseas subir este nuevo proyecto a un repositorio en GitHub:
+## 🌍 Variables de Entorno
+1. Instalar `react-native-config` (ya incluido en este proyecto):
+   ```bash
+   npm install react-native-config
+   ```
+2. Crear un archivo `.env` en la raíz con:
+   ```ini
+   API_URL=https://api.miapp.com
+   APP_NAME=MiApp
+   DEBUG_MODE=true
+   ```
+3. Usarlas en el código:
+   ```javascript
+   import Config from 'react-native-config';
+   console.log(Config.API_URL);
+   ```
 
-```bash
-git init
-git add .
-git commit -m "Initial commit from React Native base"
-git remote add origin https://github.com/TU_USUARIO/NUEVO_REPO.git
-git branch -M main
-git push -u origin main
+### 🔹 Configuración en Android
+En `android/app/build.gradle`, asegúrate de incluir:
+```gradle
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
 ```
-📌 *Reemplaza `NUEVO_REPO` con el nombre de tu nuevo repositorio.*
+
+### 🔹 Configuración en iOS
+1. Abre `ios/MyApp.xcworkspace` en Xcode.
+2. Ve a **Build Settings > All > User-Defined** y agrega las variables.
 
 ---
 
-## 📦 Paquetes incluidos
-Este proyecto base ya viene con algunas dependencias esenciales:
-
-- `react-native-paper` → Material Design UI para React Native.
-- `react-native-vector-icons` → Biblioteca de iconos, incluyendo `Ionicons`.
-- `@react-navigation/native` (Opcional) → Si deseas agregar navegación fácilmente.
-
+## 🚀 Extras
+✅ Usa `react-native-rename` para cambiar el nombre del proyecto:
+   ```bash
+   npx react-native-rename "MiNuevaApp"
+   ```
 ---
 
-## 🚀 Mejores prácticas recomendadas
-🔹 Usa `react-native-rename` para cambiar el nombre del proyecto fácilmente:
-```bash
-npx react-native-rename "MiNuevaApp"
-```
-🔹 Configura `.env` con `react-native-config` para manejar variables de entorno.
-🔹 Usa `eslint` y `prettier` para mantener un código limpio y consistente.
+¡Listo! Ahora tienes un **proyecto base** listo para usar. 🚀🔥
 
----
-
-¡Listo! Ahora tienes un **proyecto base** listo para expandirse. 🚀🔥
